@@ -1,0 +1,44 @@
+public with sharing virtual class DogSelector extends fflib_SObjectSelector implements IDogSelector
+{
+    public Schema.SObjectType getSObjectType()
+    {
+        return Dog__c.sObjectType;
+    }
+    
+    public List<Schema.SObjectField> getSObjectFieldList()
+    {
+        return new List<Schema.SObjectField>
+        {
+            Dog__c.Id,
+            Dog__c.Name,
+            Dog__c.Color__c,
+            Dog__c.Length__c,
+            Dog__c.Weigth__c,
+            Dog__c.Age__c,
+            Dog__c.Price__c,
+            Dog__c.Status__c,
+            Dog__c.Image__c
+        };
+    }
+    
+    public List<C3C_SObject> searchAllDogs()
+    {
+        fflib_QueryFactory query = newQueryFactory();
+        query.addCondition('', 'Status__c', '=', 'Disponível');
+        return (List<C3C_SObject>) this.libDatabase.queryExecute(query.toSOQL());
+        //query.setLogic('{0} AND {1} AND {2} AND {3} AND {4}');
+        // return (List<SObject>) this.libDatabase.queryExecute(query.toSOQL());
+    }
+    
+    //Method to search in basedat dsdsfdndnfjdsnfndsfnvskdnv
+    public List<C3C_SObject> searchSomeDogs(List<String> race, Decimal ageMin, Decimal ageMax, List<String> color)
+    {
+        fflib_QueryFactory query = newQueryFactory();
+        query.addCondition('', 'Status__c', '=', 'Disponível');
+        query.addCondition('AND', 'Name', 'IN', race);
+        query.addCondition('AND', 'Age__c', '>=', ageMin);
+        query.addCondition('AND', 'Age__c', '<=', ageMax);
+        query.addCondition('AND', 'Color__c', 'IN', color);
+        return (List<C3C_SObject>) this.libDatabase.queryExecute(query.toSOQL());
+    } 
+}
