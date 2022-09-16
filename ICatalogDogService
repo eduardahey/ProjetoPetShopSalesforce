@@ -1,0 +1,5 @@
+public interface ICatalogDogService {
+	CatalogDogViewModel searchDog();
+    List<DogDomain> searchAllDogs();
+    List<DogDomain> searchSomeDogs(List<String> race, Decimal ageMin, Decimal ageMax, List<String> color);
+}
