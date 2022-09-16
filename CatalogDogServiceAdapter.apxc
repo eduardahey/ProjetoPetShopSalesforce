@@ -1,0 +1,60 @@
+public with sharing virtual class CatalogDogServiceAdapter extends C3C_APP_ServiceApplicationAdapter
+{
+    public override Map<String, String> getMapServiceMethodToClassMethod()
+    {
+        return new Map<String, String>
+        {
+            'searchDog' => 'CatalogDogServiceAdapter.ADP_SearchDog',
+            'searchAllDogs' => 'CatalogDogServiceAdapter.ADP_SearchAllDogs',
+            'searchSomeDogs' => 'CatalogDogServiceAdapter.ADP_SearchSomeDogs'
+        };
+    }
+    
+    public class ADP_SearchDog extends ClassMethod
+    {
+        public override void callMethod()
+        {
+            Map<String, String> mapParams = C3C_APP_ApplicationContext.getBody();
+            
+            C3C_APP_ApplicationContext.setResponse(instanciaCatalogDogService.searchDog());
+        }
+    }
+    
+    public class ADP_SearchAllDogs extends ClassMethod
+    {
+        public override void callMethod()
+        {
+            Map<String, String> mapParams = C3C_APP_ApplicationContext.getBody();
+            
+            C3C_APP_ApplicationContext.setResponse(instanciaCatalogDogService.searchAllDogs());
+        }
+    }
+    
+    public class ADP_SearchSomeDogs extends ClassMethod
+    {
+        public override void callMethod()
+        {
+            Map<String, String> mapParams = C3C_APP_ApplicationContext.getBody();
+            List<String> race = instanciaCatalogDogService.searchDog().race;
+            List<String> color = instanciaCatalogDogService.searchDog().color;
+
+			Decimal agMin = (Decimal) JSON.deserialize(mapParams.get('ageMin'), Decimal.class);
+			Decimal agMax = (Decimal) JSON.deserialize(mapParams.get('ageMax'), Decimal.class);
+			C3C_APP_ApplicationContext.setResponse(instanciaCatalogDogService.searchSomeDogs(new List<String>{mapParams.get('race')}, agMin, agMax, new List<String>{mapParams.get('color')}));
+        }
+    }
+    
+    private static ICatalogDogService instanciaCatalogDogService
+    {
+        get
+        {
+            if(instanciaCatalogDogService == null)
+            {
+                instanciaCatalogDogService = (ICatalogDogService) C3C_DIContainer_Injector.getInstance('CatalogDogService');
+           	}
+            
+            return instanciaCatalogDogService;
+        }
+        set;
+    }
+}
