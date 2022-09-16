@@ -1,0 +1,6 @@
+public interface IDogSelector {
+	Schema.SObjectType getSObjectType();
+    List<Schema.SObjectField> getSObjectFieldList();
+    List<C3C_SObject> searchAllDogs();
+    List<C3C_SObject> searchSomeDogs(List<String> race, Decimal ageMin, Decimal ageMax, List<String> color);
+}
