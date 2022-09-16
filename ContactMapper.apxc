@@ -1,0 +1,452 @@
+public with sharing virtual class ContactMapper extends C3C_AbstractMapper implements C3C_DI_IProvider {
+    
+    // Object API Name
+    public override String getObjectName() 
+    {
+        return 'Contact';
+    }
+
+    // Atributos
+    @AuraEnabled 
+    public String recordId{get; private set;}
+    public String getRecordId()
+    {
+        return this.recordId;
+    }
+    public ContactMapper setRecordId(String recordId)
+    {
+        this.recordId = recordId;
+        this.setValueInRecord('Id', recordId);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String salutation{get; private set;}
+    public String getSalutation()
+    {
+        return this.salutation;
+    }
+    public ContactMapper setSalutation(String salutation)
+    {
+        this.salutation = salutation;
+        this.setValueInRecord('Salutation', salutation);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String firstName{get; private set;}
+    public String getFirstName()
+    {
+        return this.firstName;
+    }
+    public ContactMapper setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+        this.setValueInRecord('FirstName', firstName);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String lastName{get; private set;}
+    public String getLastName()
+    {
+        return this.lastName;
+    }
+    public ContactMapper setLastName(String lastName)
+    {
+        this.lastName = lastName;
+        this.setValueInRecord('LastName', lastName);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String accountId{get; private set;}
+    public String getAccountId()
+    {
+        return this.accountId;
+    }
+    public ContactMapper setAccountId(String accountId)
+    {
+        this.accountId = accountId;
+        this.setValueInRecord('AccountId', accountId);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String ownerId{get; private set;}
+    public String getOwnerId()
+    {
+        return this.ownerId;
+    }
+    public ContactMapper setOwnerId(String ownerId)
+    {
+        this.ownerId = ownerId;
+        this.setValueInRecord('OwnerId', ownerId);
+
+        return this;
+    }
+    
+    @AuraEnabled 
+    public String department{get; private set;}
+    public String getSDepartment()
+    {
+        return this.department;
+    }
+    public ContactMapper setDepartment(String department)
+    {
+        this.department = department;
+        this.setValueInRecord('Department', department);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public Date birthdate{get; private set;}
+    public Date getBirthdate()
+    {
+        return this.birthdate;
+    }
+    public ContactMapper setBirthdate(Date birthdate)
+    {
+        this.birthdate = birthdate;
+        this.setValueInRecord('Birthdate', birthdate);
+
+        return this;
+    }
+    
+    @AuraEnabled 
+    public String title{get; private set;}
+    public String getTitle()
+    {
+        return this.title;
+    }
+    public ContactMapper setTitle(String title)
+    {
+        this.title = title;
+        this.setValueInRecord('Title', title);
+
+        return this;
+    }
+    
+    @AuraEnabled 
+    public String phone{get; private set;}
+    public String getPhone()
+    {
+        return this.phone;
+    }
+    public ContactMapper setPhone(String phone)
+    {
+        this.phone = phone;
+        this.setValueInRecord('Phone', phone);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String homePhone{get; private set;}
+    public String getHomePhone()
+    {
+        return this.homePhone;
+    }
+    public ContactMapper setHomePhone(String homePhone)
+    {
+        this.homePhone = homePhone;
+        this.setValueInRecord('HomePhone', homePhone);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String mobilePhone{get; private set;}
+    public String getMobilePhone()
+    {
+        return this.mobilePhone;
+    }
+    public ContactMapper setMobilePhone(String mobilePhone)
+    {
+        this.mobilePhone = mobilePhone;
+        this.setValueInRecord('MobilePhone', mobilePhone);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String otherPhone{get; private set;}
+    public String getOtherPhone()
+    {
+        return this.otherPhone;
+    }
+    public ContactMapper setOtherPhone(String otherPhone)
+    {
+        this.otherPhone = otherPhone;
+        this.setValueInRecord('OtherPhone', otherPhone);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String email{get; private set;}
+    public String getEmail()
+    {
+        return this.email;
+    }
+    public ContactMapper setEmail(String email)
+    {
+        this.email = email;
+        this.setValueInRecord('Email', email);
+
+        return this;
+    }
+   
+    @AuraEnabled 
+    public String assistantName{get; private set;}
+    public String getAssistantName()
+    {
+        return this.assistantName;
+    }
+    public ContactMapper setAssistantName(String assistantName)
+    {
+        this.assistantName = assistantName;
+        this.setValueInRecord('AssistantName', assistantName);
+
+        return this;
+    }
+    
+    @AuraEnabled 
+    public String assistantPhone{get; private set;}
+    public String getAssistantPhone()
+    {
+        return this.assistantPhone;
+    }
+    public ContactMapper setAssistantPhone(String assistantPhone)
+    {
+        this.assistantPhone = assistantPhone;
+        this.setValueInRecord('AssistantPhone', assistantPhone);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String mailingStreet{get; private set;}
+    public String getMailingStreet()
+    {
+        return this.mailingStreet;
+    }
+    public ContactMapper setMailingStreet(String mailingStreet)
+    {
+        this.mailingStreet = mailingStreet;
+        this.setValueInRecord('MailingStreet', mailingStreet);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String mailingCity{get; private set;}
+    public String getMailingCity()
+    {
+        return this.mailingCity;
+    }
+    public ContactMapper setMailingCity(String mailingCity)
+    {
+        this.mailingCity = mailingCity;
+        this.setValueInRecord('MailingCity', mailingCity);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String mailingState{get; private set;}
+    public String getMailingState()
+    {
+        return this.mailingState;
+    }
+    public ContactMapper setMailingState(String mailingState)
+    {
+        this.mailingState = mailingState;
+        this.setValueInRecord('MailingState', mailingState);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String mailingPostalCode{get; private set;}
+    public String getMailingPostalCode()
+    {
+        return this.mailingPostalCode;
+    }
+    public ContactMapper setMailingPostalCode(String mailingPostalCode)
+    {
+        this.mailingPostalCode = mailingPostalCode;
+        this.setValueInRecord('MailingPostalCode', mailingPostalCode);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String mailingCountry{get; private set;}
+    public String getMailingCountry()
+    {
+        return this.mailingCountry;
+    }
+    public ContactMapper setMailingCountry(String mailingCountry)
+    {
+        this.mailingCountry = mailingCountry;
+        this.setValueInRecord('MailingCountry', mailingCountry);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String otherStreet{get; private set;}
+    public String getOtherStreet()
+    {
+        return this.otherStreet;
+    }
+    public ContactMapper setOtherStreet(String otherStreet)
+    {
+        this.otherStreet = otherStreet;
+        this.setValueInRecord('OtherStreet', otherStreet);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String otherCity{get; private set;}
+    public String getOtherCity()
+    {
+        return this.otherCity;
+    }
+    public ContactMapper setOtherCity(String otherCity)
+    {
+        this.otherCity = otherCity;
+        this.setValueInRecord('OtherCity', otherCity);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String otherPostalCode{get; private set;}
+    public String getOtherPostalCode()
+    {
+        return this.otherPostalCode;
+    }
+    public ContactMapper setOtherPostalCode(String otherPostalCode)
+    {
+        this.otherPostalCode = otherPostalCode;
+        this.setValueInRecord('OtherPostalCode', otherPostalCode);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String otherCountry{get; private set;}
+    public String getOtherCountry()
+    {
+        return this.otherCountry;
+    }
+    public ContactMapper setOtherCountry(String otherCountry)
+    {
+        this.otherCountry = otherCountry;
+        this.setValueInRecord('OtherCountry', otherCountry);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String otherState{get; private set;}
+    public String getOtherState()
+    {
+        return this.otherState;
+    }
+    public ContactMapper setOtherState(String otherState)
+    {
+        this.otherState = otherState;
+        this.setValueInRecord('OtherState', otherState);
+
+        return this;
+    }
+
+    @AuraEnabled 
+    public String description{get; private set;}
+    public String getDescription()
+    {
+        return this.description;
+    }
+    public ContactMapper setDescription(String description)
+    {
+        this.description = description;
+        this.setValueInRecord('Description', description);
+
+        return this;
+    }
+
+    @AuraEnabled
+    public String cpf {get; private set;}
+    public String getCpf()
+    {
+        return this.cpf;
+    }
+    public ContactMapper setCpf(String cpf)
+    {
+        this.cpf = cpf;
+        this.setValueInRecord('Cpf__c', cpf);
+
+        return this;
+    }
+
+    // Construtores
+    public ContactMapper(){}
+
+    // Métodos
+    // New Instance
+    public Object newInstance(Object params)
+    {
+        if(params instanceOf C3C_SObject) 
+        {
+            return construirContactRecord((C3C_SObject) params);
+        }
+        return null;
+    }
+
+    public ContactMapper construirContactRecord(C3C_SObject record)
+    {
+        this.initBuild();
+        this.record = record;
+
+        this.recordId = record.getStringByField('Id');
+        this.salutation = record.getStringByField('Salutation');
+        this.firstName = record.getStringByField('FirstName');
+        this.lastName = record.getStringByField('LastName');
+        this.phone = record.getStringByField('Phone');
+        this.homePhone = record.getStringByField('HomePhone');
+        this.mobilePhone = record.getStringByField('MobilePhone');
+        this.otherPhone = record.getStringByField('OtherPhone');
+        this.email = record.getStringByField('Email');
+        this.assistantName = record.getStringByField('AssistantName');
+        this.assistantPhone = record.getStringByField('AssistantPhone');
+        this.accountId = record.getStringByField('AccountId');
+        this.title = record.getStringByField('Title');
+        this.department = record.getStringByField('Department');
+        this.birthdate = record.getDateByField('BirthDate');
+        this.mailingStreet = record.getStringByField('MailingStreet');
+        this.mailingCity = record.getStringByField('MailingCity');
+        this.mailingState = record.getStringByField('MailingState');
+        this.mailingCountry = record.getStringByField('MailingCountry');
+        this.mailingPostalCode =  record.getStringByField('MailingPostalCode');
+        this.otherStreet = record.getStringByField('OtherStreet');
+        this.otherCity = record.getStringByField('OtherCity');
+        this.otherState = record.getStringByField('OtherState');
+        this.otherCountry = record.getStringByField('OtherCountry');
+        this.otherPostalCode = record.getStringByField('OtherPostalCode');
+        this.description = record.getStringByField('Description');
+        this.cpf = record.getStringByField('Cpf__c');
+
+        this.finishBuild();
+        return this;
+    }
+}
