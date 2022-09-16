@@ -1,0 +1,44 @@
+public class CatalogDogService implements ICatalogDogService
+{
+    public CatalogDogViewModel searchDog()
+    {
+        List<DogDomain> allDogsAvailable = (List<DogDomain>) C3C_DomainFactory.buildListDomainWithListSObject('DogDomain', dogSelectorInstance.searchAllDogs());
+        Set<String> race = new Set<String>();
+        Set<String> color = new Set<String>();
+        
+        for(DogDomain dog : allDogsAvailable) 
+        {
+            race.add(dog.getRace());
+            color.add(dog.getColor());
+        }
+        
+        return (CatalogDogViewModel) C3C_DIContainer_Injector.newInstance('CatalogDogViewModel', new Map<String, Object>{
+            'allDog' => allDogsAvailable, 
+            'race' => race,
+            'color' => color
+        });
+    }
+    
+    public List<DogDomain> searchAllDogs(){
+        List<DogDomain> selector = (List<DogDomain>) C3C_DomainFactory.buildListDomainWithListSObject('DogDomain', dogSelectorInstance.searchAllDogs());   
+        C3C_APP_ApplicationContext.setResponse(selector);
+		return selector;
+    }
+    
+    public List<DogDomain> searchSomeDogs(List<String> race, Decimal ageMin, Decimal ageMax, List<String> color){
+        List<DogDomain> selector = (List<DogDomain>) C3C_DomainFactory.buildListDomainWithListSObject('DogDomain', dogSelectorInstance.searchSomeDogs(race, ageMin,ageMax,color));
+        C3C_APP_ApplicationContext.setResponse(selector);
+        return selector;
+    }
+    
+    private IDogSelector dogSelectorInstance
+    {
+        get{
+            if(dogSelectorInstance == null){
+                dogSelectorInstance = (IDogSelector) C3C_DIContainer_Injector.getInstance('DogSelector'); 
+            }
+            return this.dogSelectorInstance;
+    	}
+        set;
+    }
+}
